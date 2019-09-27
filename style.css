@@ -1,0 +1,41 @@
+.scorecard{
+    border: 1px solid black;
+}
+
+body{
+    text-align: center;
+}
+
+fieldset {
+    padding: 0;
+    border: 0;
+    margin: 0;
+  } 
+
+.scorecard{
+    width: 150px;
+    margin: auto;
+    text-align: left;
+    margin-bottom: 50px;  
+    padding-left: 20px;    
+}
+
+.questions-form{
+    border: 1px solid black;
+    width: 350px;
+    height: 400px;
+    margin: auto;
+  
+}
+input#answer{
+    display: block;
+}
+
+@media screen and (min-width: 480px){
+    .scorecard{
+        width: 200px;    
+    }
+    .questions-form{
+        width: 500px;
+    }
+}
