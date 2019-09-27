@@ -1,41 +1,81 @@
-.scorecard{
-    border: 1px solid black;
-}
-
 body{
     text-align: center;
+    background-image: url("background2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height:100vh;
+    background-color: black;
+    color: white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 120%;
 }
 
-fieldset {
+h1{
+    font-family: 'Mansalva', cursive;
+    font-weight: 200;
+    font-size: 50px;
+    text-shadow: 2px 2px 8px orangered;
+    margin-bottom: 10px;
+}
+
+
+ fieldset {
     padding: 0;
     border: 0;
     margin: 0;
-  } 
+  }  
 
 .scorecard{
-    width: 150px;
     margin: auto;
-    text-align: left;
-    margin-bottom: 50px;  
-    padding-left: 20px;    
+    padding: 10px;    
+    margin-bottom: 20px;
+    margin-left: 20px;
+    background-image: url("scorecard.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; 
+    width: 500px;
+    height:25vh;
+}
+.scorecard p{
+    position: relative;
+    top: 60px;
+    right: 40px;  
 }
 
 .questions-form{
-    border: 1px solid black;
     width: 350px;
     height: 400px;
     margin: auto;
-  
-}
-input#answer{
-    display: block;
+    background-image: url("question\ frame.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 20px;
 }
 
-@media screen and (min-width: 480px){
+.questions-form fieldset{
+    display: block;
+    position: relative;
+    left: 10px;
+    top: 80px;
+
+}
+
+@media screen and (min-width: 700px){
     .scorecard{
-        width: 200px;    
+        margin-left: 150px;
+        margin-bottom: 0px;
+        margin-right: 0px;
     }
     .questions-form{
-        width: 500px;
+        height: 538px;
+        width: 522px;
+        padding: 0px;
+    }
+    .scorecard p{
+        right: 40px;  
     }
 }
