@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Halloween Quiz App</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Mansalva&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Spooky Halloween Quiz</h1>
+    
+    <div class = "scorecard">
+      <p>Score: </p>
+      <p>Page Number: </p>
+    </div>
+    <form role = "form" class = "questions-form">      
+        <fieldset>
+                <p>This is where the questions will be asked</p>
+            <legend>Select the answer that best fits</legend>
+            <label for = "answer-option1">
+                <input type = "radio" id = "answer-option1">
+                Option 1
+            </label>
+
+            <label for = "answer-option2">
+                <input type = "radio" id = "answer-option2">
+                Option 2
+            </label>
+
+             <label for = "answer-option3">
+                <input type = "radio" id = "answer-option3">
+                Option 3
+            </label>
+
+            <label for = "answer-option4">
+                <input type = "radio" id = "answer-option4">
+                Option 4
+            </label>
+
+        <button type = "submit"> Submit</button>
+        </fieldset>
+    </form>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
