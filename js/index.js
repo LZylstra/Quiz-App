@@ -67,11 +67,14 @@ function checkAnswers(){
    if (selectedAnswer === QUESTIONS[currentQuestionIndex].correct){
         console.log("correct");
         currentState = STORE.RESULT;
+        $('.view-form').html(`<h2>Correct!</h2>`);
    }else{
        $('.view-form').html(`
        <h2>That's the wrong answer</h2>
-       <p>The correct answer is ${QUESTIONS[currentQuestionIndex].explanation}`);
+       <p>The correct answer is ${QUESTIONS[currentQuestionIndex].correct}: ${QUESTIONS[currentQuestionIndex].explanation} `);
    }
+   currentState = STORE.QUESTIONSTATE;
+   currentQuestionIndex +=1;  
 }
 
 function loadResults(){
@@ -100,7 +103,7 @@ function buttonListener(){
                 checkAnswers()
                 break;
             case STORE.RESULT:
-                loadResults();
+               // loadResults();
                 break;
             case STORE.CORRECT:
             case STORE.INCORRECT:
