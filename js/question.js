@@ -1,4 +1,3 @@
-//questions and answers
 const QUESTIONS = [
     {id: 1, 
         question: "Halloween is generally considered to have evolved from what ancient festival?", 
@@ -31,64 +30,3 @@ const QUESTIONS = [
         explanation: "The first Jack-o-Lanterns were made in Ireland out of hollowed-out turnips"
     }
 ];
-
-const STORE = {
-    //current question
-    currentQuestion = 1,
-    //users answer choice
-    userAnswer,
-    //current view
-    view = "start",
-    //score
-    score = 0
-}
-
-function generateAnswerList(answers){
-    return `
-    `
-}
-
-function renderQuestionsText(){
-
-}
-
-function handleAnswersSubmitted(){
-    $('.user-controls').on('click', '.submit-answer', () => {
-        //retrieve answer identifier of user-checked radio button
-        //perform check: user answer === correct answer
-        //update STORE an drender appropriate section
-    });
-}
-
-$(function(){
-    handleAnswersSubmitted();
-}
-
-//intro view - shows welcome message and start button
-
-//question view - displays questions and list of selectable answers
-//feedback view - displays feedback including correct answer if user was incorrect and next button
-//results view - shows quiz score and replay button
-
-
-//display questions
-//display answers
-//let user choose answer
-//submit answer
-    //correct?
-    //wrong?
-//next question
-    //last question/reset
-
-function render(){
-    if STORE.view === 'start'){
-        $('intro').show();
-        $('quiz').hide();
-        $('status').hide();
-    else if (STORE.view === 'quiz'){
-        $('intro').hide();
-        $('quiz').show();
-        $('status').show();
-        }
-    }
-}

@@ -9,7 +9,7 @@ body{
     background-color: black;
     color: white;
     font-family: 'Indie Flower', cursive;
-    font-size: 120%;
+    font-size: 100%;
 }
 
 h1{
@@ -58,8 +58,8 @@ h1{
 .buttons{
     font-family: 'Indie Flower', cursive;
 }
-.start-form{
-    width: 350px;
+.view-form{
+    width: 400px;
     height: 400px;
     margin: auto;
     background-image: url("img/question-frame.png");
@@ -69,15 +69,16 @@ h1{
     padding: 20px;
 }
 
-.questions-form fieldset{
+.view-form fieldset{
     display: block;
     position: relative;
-    left: 10px;
+    left: 20px;
     top: 80px;
+    text-align: left;
 }
-.start-form p,button {
+.view-form p,button {
     position: relative;
-    top: 150px;
+    top: 100px;
 }
 .start {
 	box-shadow:inset 0px 1px 0px 0px #fce2c1;
@@ -112,8 +113,22 @@ h1{
     bottom: 250px;
 
 }
+#submitbtn{
+    top: 60px;
+    left: 120px;
+}
+
+#questions-text{
+    width: 300px;
+    top: 50px;
+    left: 40px;
+    margin-bottom: 0px;
+} 
 
 @media screen and (min-width: 700px){
+    body{
+        font-size: 120%;
+    }
     .scorecard{
         margin-left: 150px;
         margin-bottom: 0px;
@@ -124,12 +139,35 @@ h1{
         width: 522px;
         padding: 0px;
     }    
-    .start-form{
+    #questions-text{
+
+        top: 90px;
+        left: 100px;
+        margin-bottom: 0px;
+    } 
+    .view-form{
         height: 538px;
         width: 522px;
         padding: 0px;
     }
+    .view-form p {
+        position: relative;
+        top: 200px;
+    }
+    .start{
+        position: relative;
+        top: 250px;
+    }
     .scorecard p{
         right: 40px;  
+    }
+    #submitbtn{
+        top: 100px;
+        left: 160px;
+    }
+
+    .view-form fieldset{
+        left: 60px;
+        top: 100px;
     }
 }
