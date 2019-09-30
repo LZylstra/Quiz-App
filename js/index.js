@@ -18,7 +18,7 @@ function loadStart(){
     $('.view-form').html(`
         <p id = "start-text">Are you a master of all things spooky?  Test your knowledge here</p>  
         <input type="button" class = "start" value="Start Quiz" />
-        <img id = "pumpkin" src="img/pumpkin.png" alt="nerdy pumpkin">
+        
     `);
 }
 
@@ -29,7 +29,7 @@ function loadNextQ(){
         <div id = "scorecard-text">
         <p>Correct: ${numberRight} </p>
         <p>Incorrect: ${numberWrong} </p>
-        <p>Page Number: ${currentQuestionIndex+1} / 5 </p></div></div>
+        <p>Question: ${currentQuestionIndex+1} / 5 </p></div></div>
         <p id = "questions-text">${QUESTIONS[currentQuestionIndex].question}</p>
         <fieldset>
             <legend>Select the answer that best fits</legend>
@@ -61,25 +61,32 @@ function checkAnswers(){
         alert("Please pick an option");
     }
     else{
-        $('.view-form').html(`<div class = "scorecard">
-        <div id = "scorecard-text">
-        <p>Correct: ${numberRight} </p>
-        <p>Incorrect: ${numberWrong} </p>
-        <p>Page Number: ${currentQuestionIndex+1} / 5 </p></div></div>`);
-        if (selectedAnswer === QUESTIONS[currentQuestionIndex].correct){
+        if (selectedAnswer === QUESTIONS[currentQuestionIndex].correct){ //if answer is correct
             //console.log("correct");
-             $('.view-form').html(`<h2>Correct!</h2>
+            numberRight+=1;
+             $('.view-form').html(`
+             <div class = "scorecard">
+            <div id = "scorecard-text">
+            <p>Correct: ${numberRight} </p>
+            <p>Incorrect: ${numberWrong} </p>
+            <p>Question: ${currentQuestionIndex+1} / 5 </p></div></div>
+             <h2>Correct!</h2>
             <p class = "explanation">${QUESTIONS[currentQuestionIndex].explanation}</p>
             <button class = "start" id = "nextbtn" type = "submit"> Next</button>`);
-            numberRight+=1;
+
             currentState=STORE.CORRECT;
                 
-        }else if (selectedAnswer != QUESTIONS[currentQuestionIndex].correct) {
+        }else if (selectedAnswer != QUESTIONS[currentQuestionIndex].correct) { //if answer is not correct
+            numberWrong+=1;
             $('.view-form').html(`
+            <div class = "scorecard">
+            <div id = "scorecard-text">
+            <p>Correct: ${numberRight} </p>
+            <p>Incorrect: ${numberWrong} </p>
+            <p>Question: ${currentQuestionIndex+1} / 5 </p></div></div>
             <h2>That's the wrong answer</h2>
             <p class = "explanation">The correct answer is ${QUESTIONS[currentQuestionIndex].correct}: ${QUESTIONS[currentQuestionIndex].explanation}</p>
             <button class = "start" id = "nextbtn" type = "submit"> Next</button> `);
-            numberWrong+=1;
             currentState = STORE.INCORRECT;
         }
     }
@@ -116,7 +123,6 @@ function buttonListener(){
                     loadNextQ();
                 }
                 else {
-                    console.log("it gets here")
                     loadResults();
                 }
                 break;
