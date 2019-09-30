@@ -28,10 +28,12 @@ h1{
   }  
 
 .scorecard{
-    margin: auto;
+  /*  margin: auto;
     padding: 10px;    
     margin-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 20px;*/
+    position: fixed;
+    top: 660px;
     background-image: url("img/scorecard.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -41,10 +43,13 @@ h1{
 }
 .scorecard p{
     position: relative;
-    top: 60px;
-    right: 40px;  
+    margin: 0px;
+    text-align: center;
 }
 
+#scorecard-text{
+    bottom: 20px;
+}
 .questions-form{
     width: 350px;
     height: 400px;
@@ -125,14 +130,24 @@ h1{
     margin-bottom: 0px;
 } 
 
+h2{
+    display: inline;
+    position: relative;
+    top: 60px;
+
+}
+.explanation{
+    width: 350px;
+    margin: auto;
+}
+
 @media screen and (min-width: 700px){
     body{
         font-size: 120%;
     }
     .scorecard{
-        margin-left: 150px;
-        margin-bottom: 0px;
-        margin-right: 0px;
+        left: 50px;
+        top: 200px;
     }
     .questions-form{
         height: 538px;
@@ -158,8 +173,9 @@ h1{
         position: relative;
         top: 250px;
     }
-    .scorecard p{
-        right: 40px;  
+    #scorecard-text{
+        position: relative;
+        bottom: 120px;
     }
     #submitbtn{
         top: 100px;
@@ -170,4 +186,9 @@ h1{
         left: 60px;
         top: 100px;
     }
+
+    h2{
+        top: 120px;
+    }
+
 }

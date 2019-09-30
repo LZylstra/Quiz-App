@@ -7,7 +7,7 @@ const STORE = {
     RESULT: 'result'
 };
 
-let currentState, numberRight, numberWrong, currentQuestionIndex
+let currentState, numberRight, numberWrong, currentQuestionIndex;
 
 function loadStart(){
     currentState = STORE.START;
@@ -24,23 +24,21 @@ function loadStart(){
 
 function loadNextQ(){
     currentState = STORE.QUESTIONSTATE   
-    numberRight = 0;
-    numberWrong = 0;
-
     $('.view-form').html(`
-    <p id = "questions-text">${QUESTIONS[currentQuestionIndex].question}</p>
-    <fieldset>
-        <legend>Select the answer that best fits</legend>
-        ${generateAnswerList(QUESTIONS[currentQuestionIndex].answers)}
-        <button class = "start" id = "submitbtn" type = "submit"> Submit</button> 
-    </fieldset>
+        <div class = "scorecard">
+        <div id = "scorecard-text">
+        <p>Correct: ${numberRight} </p>
+        <p>Incorrect: ${numberWrong} </p>
+        <p>Page Number: ${currentQuestionIndex+1} / 5 </p></div></div>
+        <p id = "questions-text">${QUESTIONS[currentQuestionIndex].question}</p>
+        <fieldset>
+            <legend>Select the answer that best fits</legend>
+            ${generateAnswerList(QUESTIONS[currentQuestionIndex].answers)}
+            <button class = "start" id = "submitbtn" type = "submit"> Submit</button> 
+        </fieldset>
    
     `);
-    //currentQuestionIndex +=1;
-
 }
-
-
 
 function generateAnswerList(answers){
     let allanswers = "";
@@ -50,46 +48,51 @@ function generateAnswerList(answers){
             ${answers[i]}
         </label><br>`;
     }
-    return allanswers;
-    
+    return allanswers;   
 }
 
 function checkAnswers(){
-        //retrieve answer identifier of user-checked radio button
-        //perform check: user answer === correct answer
-        //update STORE an drender appropriate section
-   // });
-   //return right or wrong
    let selectedOption = $('input:checked');
    let selectedAnswer = selectedOption.val();
-   console.log(selectedAnswer);
-   console.log(QUESTIONS[currentQuestionIndex].correct);
-   if (selectedAnswer === QUESTIONS[currentQuestionIndex].correct){
-        console.log("correct");
-        currentState = STORE.RESULT;
-        $('.view-form').html(`<h2>Correct!</h2>`);
-   }else{
-       $('.view-form').html(`
-       <h2>That's the wrong answer</h2>
-       <p>The correct answer is ${QUESTIONS[currentQuestionIndex].correct}: ${QUESTIONS[currentQuestionIndex].explanation} `);
-   }
-   currentState = STORE.QUESTIONSTATE;
-   currentQuestionIndex +=1;  
+   //console.log(selectedAnswer);
+   //console.log(QUESTIONS[currentQuestionIndex].correct);
+   if (!$('input[name=answers]:checked').val() ) 
+    {
+        alert("Please pick an option");
+    }
+    else{
+        $('.view-form').html(`<div class = "scorecard">
+        <div id = "scorecard-text">
+        <p>Correct: ${numberRight} </p>
+        <p>Incorrect: ${numberWrong} </p>
+        <p>Page Number: ${currentQuestionIndex+1} / 5 </p></div></div>`);
+        if (selectedAnswer === QUESTIONS[currentQuestionIndex].correct){
+            //console.log("correct");
+             $('.view-form').html(`<h2>Correct!</h2>
+            <p class = "explanation">${QUESTIONS[currentQuestionIndex].explanation}</p>
+            <button class = "start" id = "nextbtn" type = "submit"> Next</button>`);
+            numberRight+=1;
+            currentState=STORE.CORRECT;
+                
+        }else if (selectedAnswer != QUESTIONS[currentQuestionIndex].correct) {
+            $('.view-form').html(`
+            <h2>That's the wrong answer</h2>
+            <p class = "explanation">The correct answer is ${QUESTIONS[currentQuestionIndex].correct}: ${QUESTIONS[currentQuestionIndex].explanation}</p>
+            <button class = "start" id = "nextbtn" type = "submit"> Next</button> `);
+            numberWrong+=1;
+            currentState = STORE.INCORRECT;
+        }
+    }
 }
 
 function loadResults(){
-    currentState = STORE.QUESTIONSTATE;
-    currentQuestionIndex +=1;  
-
     $('.view-form').html(`
-    <p id = "questions-text">${QUESTIONS[currentQuestionIndex].question}</p>
-    <fieldset>
-        <legend>Select the answer that best fits</legend>
-        ${generateAnswerList(QUESTIONS[currentQuestionIndex].answers)}
-        <button class = "start" id = "submitbtn" type = "submit"> Submit</button> 
-    </fieldset>
-   
+    <p>Final results:</p>
+    <p>Correct: ${numberRight} <br>
+    Incorrect: ${numberWrong}</p>
+    <button class = "start" type = "submit"> Restart Quiz</button> 
     `);
+    currentState = STORE.END;
 }
 
 function buttonListener(){
@@ -103,14 +106,19 @@ function buttonListener(){
                 checkAnswers()
                 break;
             case STORE.RESULT:
-               // loadResults();
+                loadResults();
                 break;
             case STORE.CORRECT:
             case STORE.INCORRECT:
-                //increment questions
-                //add answer or next state display state, set state to next, wait to click btn, increment when in next so that can
-                // display the results in between questionsS
-                //if else load end vs next quest
+                currentQuestionIndex +=1;  //increment questions
+                currentState = STORE.QUESTIONSTATE;
+                if (currentQuestionIndex < QUESTIONS.length){
+                    loadNextQ();
+                }
+                else {
+                    console.log("it gets here")
+                    loadResults();
+                }
                 break;
             case STORE.END:
                 //restart
@@ -125,32 +133,4 @@ $(function(){
     loadStart();
 });
 
-
-
-//question view - displays questions and list of selectable answers
-//feedback view - displays feedback including correct answer if user was incorrect and next button
-//results view - shows quiz score and replay button
-
-
-//display questions
-//display answers
-//let user choose answer
-//submit answer
-    //correct?
-    //wrong?
-//next question
-    //last question/reset
-
-//function render(){
-  //  if (STORE.view === 'start'){
-  //      $('intro').show();
-  //      $('quiz').hide();
-  //      $('status').hide();
-   // }
-   // else if (STORE.view === 'quiz'){
-  //      $('intro').hide();
-   //     $('quiz').show();
-   //     $('status').show();
-  //  }
-//}
 
