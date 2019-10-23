@@ -39,7 +39,7 @@ h1{
     background-repeat: no-repeat;
     background-size: contain; 
     width: 500px;
-    height:25vh;
+    min-height:200px;
 }
 .scorecard p{
     position: relative;
