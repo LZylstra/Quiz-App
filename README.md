@@ -6,4 +6,4 @@ Technologies: HTML/CSS/JavaScript
 
 https://lzylstra.github.io/Quiz-App/
 
-![alt text](https://raw.githubusercontent.com/lzylstra/quiz-app/master/images/Example.png)
+![alt text](https://raw.githubusercontent.com/lzylstra/quiz-app/master/img/Example.png)
